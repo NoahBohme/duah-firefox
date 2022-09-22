@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>DUAH - Morgenradio</title>
+
+    <!--Import font-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <!--Import favicon-->
+    <link rel="icon" type="image/x-icon" href="https://denuafhaengige.dk/favicon.ico">
+</head>
+
+
+<body>
+    <div class="main">
+        <h1>DUAH - Morgenradio</h1>
+        <p id="offline" style="color: red; font-size: 24px; display: none;">Radioen er offline</p>
+        <p>Den uafhængiges radio virker desværre ikke på Firefox - det bliver hermed løst :_)</p>
+        <iframe id="radio" style='height: 40px; width: 40%; display: none;' src="" frameborder="0" autoplay="autoplay"></iframe>
+        <button class="livebutton" id="listen">Lyt med med live!</button>
+    
+
+    </div>
+</body>
+
+<script>
+
+const options = { timeZone: 'Europe/Copenhagen', timeZoneName: 'short'};
+const today = new Date();
+hour = (today.toLocaleTimeString(options).split('.')[0])
+
+if(!(hour >= 7 && hour <= 9)){
+    document.getElementById("listen").style.display = "none";
+    document.getElementById("offline").style.display = "";
+}
+
+document.getElementById("listen").onclick = function() {
+  var iframe = document.getElementById("radio");
+  iframe.src = "https://duah.out.airtime.pro/duah_a";
+  iframe.style.display = "";
+
+  var button = document.getElementById("listen");
+    button.style.display = "none";
+}
+</script>
+
+<style>
+
+    body{
+        background-color: rgb(0, 0, 0);
+        color: rgb(222, 222, 222);
+        font-family: 'Roboto';
+        font-size: 22px;
+        font-weight: 300;
+    }
+    .main{
+        margin-top: 50px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .livebutton{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        background-color: red;
+        color: white;
+        font-size: 18px;
+        border-width: 0px;
+    }
+</style>
+
+
+
+
+</html>
